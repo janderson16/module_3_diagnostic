@@ -2,13 +2,15 @@ require 'rails_helper'
 
 describe "As a user when I visit the root" do
   scenario "and I fill in the search form" do
+    VCR.use_cassette("services/search_function") do
+      
+      visit "/"
 
-    visit "/"
+      fill_in "search" with "80203"
 
-    fill_in "search" with "80203"
-
-    expect(path).to equal('http://localhost:3000/search?utf8=%E2%9C%93&q=80203&commit=Locate')
-    expect(page)
+      expect(path).to equal('http://localhost:3000/search?utf8=%E2%9C%93&q=80203&commit=Locate')
+      expect(page).to have_content
+    end
   end
 end
 As a user
