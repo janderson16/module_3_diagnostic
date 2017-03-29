@@ -6,15 +6,15 @@ class NrelService
     @auth = "?api_key=#{ENV["secret"]}"
   end
 
-  def nearest_stations
+  def nearest_stations(location)
     binding.pry
-    parse(connection.get(auth)"&location=80203&fuel_type=ELEC,LPG&radius=6&limit=10")
+    parse(connection.get(auth)"&location=#{location}&fuel_type=ELEC,LPG&radius=6&limit=10")
   end
 
   private
 
   def parse
-    JSON.parse(response.body)
+    JSON.parse(response.body, symbolize_names: true)
   end
 
 end
