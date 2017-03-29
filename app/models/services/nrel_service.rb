@@ -3,11 +3,11 @@ class NrelService
 
   def initialize
     @connection = Faraday.new('https://api.data.gov/nrel/alt-fuel-stations/v1.json')
-    auth = "?limit=10&api_key=#{ENV["secret"]}"
+    auth = "?api_key=#{ENV["secret"]}"
   end
 
   def stations
-    parse()
+    parse(connection.get(auth)"&location=80203&fuel_type=ELEC&limit=10")
   end
 
   private
