@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "As a user when I visit the root" do
-  scenario "and I fill in the search form" do
+  xscenario "and I fill in the search form" do
     VCR.use_cassette("services/search_function") do
 
       visit "/"
