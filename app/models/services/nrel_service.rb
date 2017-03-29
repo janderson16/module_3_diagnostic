@@ -2,12 +2,13 @@ class NrelService
   attr_reader
 
   def initialize
-    @connection = Faraday.new('https://api.data.gov/nrel/alt-fuel-stations/v1.json')
+    @connection = Faraday.new('https://api.data.gov/nrel/alt-fuel-stations/v1/nearest.json')
     auth = "?api_key=#{ENV["secret"]}"
   end
 
   def stations
-    parse(connection.get(auth)"&location=80203&fuel_type=ELEC&limit=10")
+    binding.pry
+    parse(connection.get(auth)"&location=80203&fuel_type=ELEC,LPG&radius=6&limit=10")
   end
 
   private

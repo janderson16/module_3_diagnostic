@@ -9,7 +9,13 @@ describe "As a user when I visit the root" do
       fill_in "search" with "80203"
 
       expect(path).to equal('http://localhost:3000/search?utf8=%E2%9C%93&q=80203&commit=Locate')
-      expect(page).to have_content
+      expect(page).to have_content("U-Haul")
+      expect(page).to have_content("PUBLIC STATIONS")
+      expect(page).to have_content("City of Denver - Firehouse Parking Lot")
+      expect(page).to have_content("VERVE DENVER")
+      expect(page).to have_content("City of Denver - Acme Parking Lot")
+      expect(page).to have_content("City of Denver - Denver Performing Arts Center Garage")
+      expect(page).to have_content("City of Denver - Colorado Convention Center Garage")
     end
   end
 end
